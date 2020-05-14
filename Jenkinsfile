@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = 332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone_dev
+        registry = '332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone_dev'
     }
     stages {
         stage('Lint'){
@@ -12,8 +12,10 @@ pipeline {
         stage('Login to registry'){
             steps {
                 withAWS(profile: 'default'){
-                    def login = ecrLogin();
-                    sh "${login}"
+                    script {
+                        def login = ecrLogin();
+                        sh "${login}"
+                    }
                 }
             }
         }
