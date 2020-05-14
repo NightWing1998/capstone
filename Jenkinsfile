@@ -19,8 +19,8 @@ pipeline {
         }
         stage('Building & Publishing Docker image'){
             steps {
-                docker build -t 332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone_dev .
-                docker push 332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone_dev:latest
+                sh "docker build -t ${registry} ."
+                sh "docker push ${registry}:latest"
             }
         }
     }
