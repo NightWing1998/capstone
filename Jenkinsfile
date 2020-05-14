@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Installation'){
             steps {
-                bash 'make setup'
+                sh 'make setup'
             }
         }
         stage('Lint'){
             steps {
-                bash 'make lint'
+                sh 'make lint'
             }
         }
         stage('Build'){
             steps {
-                bash 'make build'
+                sh 'make build'
             }
         }
     }
