@@ -12,8 +12,10 @@ pipeline {
         stage('Login to registry'){
             steps {
                 withAWS(profile: 'default'){
-                    def login = ecrLogin();
-                    sh "${login}"
+                    script{
+                        def login = ecrLogin();
+                        sh "${login}"
+                    }
                 }
             }
         }
