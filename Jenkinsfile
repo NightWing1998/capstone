@@ -25,5 +25,10 @@ pipeline {
                 sh "docker push ${registry}:latest"
             }
         }
+        stage('Deploying to pod'){
+            steps{
+                sh './run_kubernetes.sh'
+            }
+        }
     }
 }

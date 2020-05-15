@@ -1,0 +1,37 @@
+{
+    "kind": "ReplicationController",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "blue",
+        "labels": {
+            "app": "blue"
+        }
+    },
+    "spec": {
+        "replicas": 1,
+        "selector": {
+            "app": "blue"
+        },
+        "template": {
+            "metadata": {
+                "labels": {
+                    "app": "blue"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "blue",
+                        "image": "332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone",
+                        "ports": [
+                            {
+                                "name": "http-server",
+                                "containerPort": 80
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
