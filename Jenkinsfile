@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = '332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone_dev'
+        registry = '332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone'
     }
     stages {
         stage('Lint'){
