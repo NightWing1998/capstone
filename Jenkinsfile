@@ -29,13 +29,14 @@ pipeline {
 
     stage('Deploying to pod') {
       steps {
-        sh '''sh \'\'\'
-                    kubectl apply -f ./green-controller.json
+        // sh './run_kubernetes.sh' --> getting permission denied in running this
+        sh '''
+            kubectl apply -f ./green-controller.json
 
-                    kubectl describe service
+            kubectl describe service
 
-                    kubectl apply -f ./blue-green-lb.json
-                \'\'\''''
+            kubectl apply -f ./blue-green-lb.json
+        '''
       }
     }
 
