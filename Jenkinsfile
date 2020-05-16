@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = '913924799393.dkr.ecr.us-west-2.amazonaws.com/capstone'
+        registry = '913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone'
         ACCOUNT_ID = '913924799393'
         CLUSTER_NAME = 'capstone'
     }
