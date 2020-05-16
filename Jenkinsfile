@@ -42,7 +42,7 @@ pipeline {
 
   }
   environment {
-    registry = '913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone_blue'
+    registry = '913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone_green'
     ACCOUNT_ID = '913924799393'
     CLUSTER_NAME = 'capstone'
   }
