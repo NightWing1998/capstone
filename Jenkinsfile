@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = '913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone'
+        registry = '913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone_blue'
         ACCOUNT_ID = '913924799393'
         CLUSTER_NAME = 'capstone'
     }
@@ -26,11 +26,6 @@ pipeline {
             steps {
                 sh "docker build -t ${registry} ."
                 sh "docker push ${registry}:latest"
-            }
-        }
-        stage('Set config for kubectl'){
-            steps{
-                sh "kubectl config use-context arn:aws:eks:us-east-1:${ACCOUNT_ID}:cluster/${CLUSTER_NAME}"
             }
         }
         stage('Deploying to pod'){
