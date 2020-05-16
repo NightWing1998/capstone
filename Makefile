@@ -9,10 +9,10 @@ lint:
 	tidy -e -q index.html;
 
 build:
-	docker build -t 332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone .;
+	docker build -t 332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone_green .;
 	# aws login command
 	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 332154536608.dkr.ecr.us-east-1.amazonaws.com;
 	#push image
-	docker push 332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone:latest;
+	docker push 332154536608.dkr.ecr.us-east-1.amazonaws.com/capstone_green:latest;
 
 all: setup lint build

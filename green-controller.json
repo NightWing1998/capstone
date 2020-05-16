@@ -21,7 +21,7 @@
             "spec": {
                 "containers": [{
                     "name": "green",
-                    "image": "913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone",
+                    "image": "913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone_green",
                     "ports": [{
                         "name": "http-server",
                         "containerPort": 80
