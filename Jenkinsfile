@@ -31,7 +31,7 @@ pipeline {
       steps {
         // sh './run_kubernetes.sh' --> getting permission denied in running this
         sh '''
-            kubectl apply -f ./green-controller.json
+            kubectl apply -f ./blue_controller.json
 
             kubectl describe service
 
