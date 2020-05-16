@@ -1,37 +1,49 @@
 pipeline {
-    agent any
-    environment {
-        registry = '913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone_green'
-        ACCOUNT_ID = '913924799393'
-        CLUSTER_NAME = 'capstone'
+  agent any
+  stages {
+    stage('Lint') {
+      steps {
+        sh 'make lint'
+      }
     }
-    stages {
-        stage('Lint'){
-            steps {
-                sh 'make lint'
-            }
+
+    stage('Login to registry') {
+      steps {
+        withAWS(profile: 'default') {
+          script {
+            def login = ecrLogin();
+            sh "${login}"
+          }
+
         }
-        stage('Login to registry'){
-            steps {
-                withAWS(profile: 'default'){
-                    script {
-                        def login = ecrLogin();
-                        sh "${login}"
-                        sh "kubectl create secret generic regcred --from-file=.dockerconfigjson=~/.docker/config.json --type=kubernetes.io/dockerconfigjson"
-                    }
-                }
-            }
-        }
-        stage('Building & Publishing Docker image'){
-            steps {
-                sh "docker build -t ${registry} ."
-                sh "docker push ${registry}:latest"
-            }
-        }
-        stage('Deploying to pod'){
-            steps{
-                sh './run_kubernetes.sh'
-            }
-        }
+
+      }
     }
+
+    stage('Building & Publishing Docker image') {
+      steps {
+        sh "docker build -t ${registry} ."
+        sh "docker push ${registry}:latest"
+      }
+    }
+
+    stage('Deploying to pod') {
+      steps {
+        // sh './run_kubernetes.sh' --> getting permission denied in running this
+        sh '''
+            kubectl apply -f ./green-controller.json
+
+            kubectl describe service
+
+            kubectl apply -f ./blue-green-lb.json
+        '''
+      }
+    }
+
+  }
+  environment {
+    registry = '913924799393.dkr.ecr.us-east-1.amazonaws.com/capstone_blue'
+    ACCOUNT_ID = '913924799393'
+    CLUSTER_NAME = 'capstone'
+  }
 }
