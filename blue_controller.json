@@ -31,7 +31,9 @@
                         ]
                     }
                 ],
-                "imagePullSecrets": "regcred"
+                "imagePullSecrets": [{
+                    "name": "regcred"
+                }]
             }
         }
     }
