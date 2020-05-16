@@ -27,7 +27,16 @@ In each branch the following files remain almost same:
 
 NOTE: Regarding the cloudformation script for creating infrastrucutre: This project uses eksctl which automates the creating and deploying of stack for us.
 The following is a sample command to do the same:
-`eksctl create cluster --name capstone --region us-east-1 --nodegroup-name capstone-workers --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 4 --ssh-access --ssh-public-key capstone --managed`
+```
+    eksctl create cluster\ 
+    --name capstone\
+    --region us-east-1\ 
+    --nodegroup-name capstone-workers\ 
+    --node-type t3.medium 
+    --nodes 3 --nodes-min 1 --nodes-max 4 
+    --ssh-access --ssh-public-key capstone\ 
+    --managed
+```
 
 ## Screenshots
 
