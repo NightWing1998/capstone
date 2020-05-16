@@ -29,8 +29,13 @@ pipeline {
 
     stage('Deploying to pod') {
       steps {
-        sh 'sh "chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}@script"'
-        sh '"./run_kubernetes.sh"'
+        sh '''sh \'\'\'
+                    kubectl apply -f ./green-controller.json
+
+                    kubectl describe service
+
+                    kubectl apply -f ./blue-green-lb.json
+                \'\'\''''
       }
     }
 
