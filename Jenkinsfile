@@ -30,7 +30,7 @@ pipeline {
     stage('Deploying to pod') {
       steps {
         sh 'sh "chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}@script"'
-        sh 'run_kubernetes.sh'
+        sh '"./run_kubernetes.sh"'
       }
     }
 
