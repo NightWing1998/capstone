@@ -17,6 +17,7 @@ pipeline {
                     script {
                         def login = ecrLogin();
                         sh "${login}"
+                        sh "kubectl create secret generic regcred --from-file=.dockerconfigjson=~/.docker/config.json --type=kubernetes.io/dockerconfigjson"
                     }
                 }
             }
