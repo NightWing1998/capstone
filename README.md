@@ -20,7 +20,7 @@ In each branch the following files remain almost same:
 - Makefile - setup file to ease up the process of setup lint and build
 - run_docker.sh - Script file which contains compiled commands to build and run a docker application from dockerfile
 - run_kubernetes.sh - Script file which contains compiled commands to run an application in kubernetes cluster
-    >>> NOTE: YOU NEED TO HAVE CLUSTERS AND CLUSTER MANAGERS SETUP WITH THE `.kube/config` FILE CORRECTLY CONFIGURED AS WELL TO RUN `run_kubernetes.sh` SUCCESSFULLY. FOR THIS THE BUILD SERVER HAS TO DEPLOY THE STACK USING EKSCTL WHICH AUTOMATICALLY SETS THE CONFIG FILE OF KUBERNETES FOR A USER. SAMPLE COMMAND GIVEN BELOW.
+    > NOTE: YOU NEED TO HAVE CLUSTERS AND CLUSTER MANAGERS SETUP WITH THE `.kube/config` FILE CORRECTLY CONFIGURED AS WELL TO RUN `run_kubernetes.sh` SUCCESSFULLY. FOR THIS THE BUILD SERVER HAS TO DEPLOY THE STACK USING EKSCTL WHICH AUTOMATICALLY SETS THE CONFIG FILE OF KUBERNETES FOR A USER. SAMPLE COMMAND GIVEN BELOW.
 - Jenkinsfile - Target file for jenkins server
 - *controller.json - It defines the replica controller for the kuberenetes cluster along with the images it should rely on for running containers
 - blue-green-lb.json - Sets the load balancer to point to "branch" application
