@@ -15,7 +15,7 @@ pipeline {
             sh "${login}"
 
 
-            sh  "kubectl create secret generic regcred --from-file=.dockerconfigjson=.docker/config.json --type=kubernetes.io/dockerconfigjson"
+            sh  "kubectl create secret generic regcred --from-file=.dockerconfigjson=/var/lib/jenkins/.docker/config.json --type=kubernetes.io/dockerconfigjson"
           }
 
         }
