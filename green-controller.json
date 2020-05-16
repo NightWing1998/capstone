@@ -27,7 +27,11 @@
                         "containerPort": 80
                     }]
                 }],
-                "imagePullSecrets": "regcred"
+                "imagePullSecrets": [
+                    {
+                        "name" : "regcred"
+                    }
+                ]
             }
         }
     }
